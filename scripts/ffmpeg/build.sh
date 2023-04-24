@@ -5,6 +5,10 @@ case $ANDROID_ABI in
     # Disabling assembler optimizations, because they have text relocations
     EXTRA_BUILD_CONFIGURATION_FLAGS="$EXTRA_BUILD_CONFIGURATION_FLAGS --disable-asm"
     ;;
+  armeabi-v7a)
+    # Disabling assembler optimizations, because they have text relocations
+    EXTRA_BUILD_CONFIGURATION_FLAGS="$EXTRA_BUILD_CONFIGURATION_FLAGS --disable-neon"
+    ;;
   x86_64)
     EXTRA_BUILD_CONFIGURATION_FLAGS="$EXTRA_BUILD_CONFIGURATION_FLAGS --x86asmexe=${FAM_YASM}"
     ;;
@@ -44,7 +48,6 @@ DEP_LD_FLAGS="-L${BUILD_DIR_EXTERNAL}/${ANDROID_ABI}/lib $FFMPEG_EXTRA_LD_FLAGS"
   --extra-ldflags="$DEP_LD_FLAGS" \
   --disable-shared \
   --enable-static \
-  --disable-vulkan \
   --disable-symver \
   --disable-doc \
   --disable-htmlpages \
